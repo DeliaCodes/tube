@@ -1,7 +1,15 @@
 "use strict";
 
-function getVideos (){
+function getVideos (search, callback){
 
+buildApiRequest('GET',
+                '/youtube/v3/search',
+                {'maxResults': '25',
+                 'part': 'snippet',
+                 'q': 'toFind',
+                 'type': 'video'});
+
+  }
 	function getAuth(){};
 };
 

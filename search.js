@@ -1,6 +1,6 @@
 "use strict";
 
-function getVideos (search, callback){
+  function defineRequest() {
 
 buildApiRequest('GET',
                 '/youtube/v3/search',
@@ -9,9 +9,7 @@ buildApiRequest('GET',
                  'q': 'toFind',
                  'type': 'video'});
 
-  }
-	function getAuth(){};
-};
+  };
 
 function displayResults () {};
 

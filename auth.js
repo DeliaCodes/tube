@@ -1,3 +1,5 @@
+//edit this to reflect youtube links and replace it with a one liner youtube gapi or call the buildAPI
+
 function start() {
         // Initializes the client with the API key and the Translate API.
         gapi.client.init({

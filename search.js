@@ -1,4 +1,10 @@
 "use strict";
+ //finish hooking the search button
+ // grab everything needed from youtube sample code
+ //console log results
+ //after it checks out work on display and getting in thumbnails
+ //make it clickable
+
  function buildApiRequest(requestMethod, path, params) {
     params = removeEmptyParams(params);
     var request = gapi.client.request({

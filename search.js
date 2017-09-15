@@ -9,8 +9,7 @@
 function start() {
         // Initializes the client with the API key and the Translate API.
         gapi.client.init({
-          'apiKey': 'YOUR_API_KEY',
-          'discoveryDocs': [''],
+          'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
         }).then(
 
 // Search for a specified string.
@@ -19,21 +18,16 @@ function search() {
   var request = gapi.client.youtube.search.list({
     q: q,
     part: 'snippet'
-  }).then(function(response) {
-          console.log(response.result.data.translations[0].translatedText);
-        }, function(reason) {
-          console.log('Error: ' + reason.result.error.message);
-        });
-      };
+  });};
 
   request.execute(function(response) {
     var str = JSON.stringify(response.result);
     $('#results').html('<pre>' + str + '</pre>');
   });
+);
+// Loads the JavaScript client library and invokes `start` afterwards.
+      gapi.load('client', start);
 
-}
-
-search ();
 /*
 function displayResults () {};
 

@@ -18,13 +18,15 @@ function search() {
   var request = gapi.client.youtube.search.list({
     q: q,
     part: 'snippet'
-  });};
+  }
+  );
+}).then(
 
   request.execute(function(response) {
     var str = JSON.stringify(response.result);
     $('#results').html('<pre>' + str + '</pre>');
-  });
-);
+  };););
+};
 // Loads the JavaScript client library and invokes `start` afterwards.
       gapi.load('client', start);
 

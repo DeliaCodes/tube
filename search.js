@@ -11,7 +11,6 @@ function start() {
         gapi.client.init({
           'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
         });
-      console.log("HI")
 }
 // Search for a specified string.
 function search() {
@@ -29,7 +28,6 @@ function search() {
 
 
 request.execute(function(response) {
-  console.log(response)
   for (var i = 0; i < response.items.length; i++){
     $('#results').append("<iframe width='420' height='315'\
                           src=https://www.youtube.com/embed/"+response.items[i].id.videoId+"> \
@@ -50,10 +48,9 @@ function handleLoad(){
 
 $('#search-button').click( function() {
   event.preventDefault();
-
   search();
   var toFind = $('input').val();
-  console.log(toFind);
+
 // defineRequest(toFind);
 // displayResults();
 

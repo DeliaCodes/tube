@@ -7,9 +7,32 @@
  //search is hooked up but we need to finish the API auth first
 
 function start() {
-        // Initializes the client with the API key and the Translate API.
+  // 2. Initialize the JavaScript client library.
+  gapi.client.init({
+    'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
+  }
+
+  function() {
+    // 3. Initialize and make the API request.
+    return gapi.client.request({
+      'path': 'gapi.client.youtube.search.list',
+    })
+  })
+
+  function(response) {
+    console.log(response.result);
+  }, function(reason) {
+    console.log('Error: ' + reason.result.error.message);
+  };
+};
+// 1. Load the JavaScript client library.
+gapi.load('client', start);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function start() {
+        // Initializes the client with the API key and the youtube API.
         gapi.client.init({
           'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
+            //https://developers.google.com/api-client-library/javascript/start/start-js - option 2
         }).then(
 
 // Search for a specified string.
@@ -20,33 +43,30 @@ function search() {
     part: 'snippet'
   }
   );
-}).then(
+}
 
   request.execute(function(response) {
     var str = JSON.stringify(response.result);
     $('#results').html('<pre>' + str + '</pre>');
-  };););
-};
-// Loads the JavaScript client library and invokes `start` afterwards.
-      gapi.load('client', start);
+  });
 
-/*
+
+// Loads the JavaScript client library and invokes `start` afterwards.
+$('#search-button').click(
+
+  );
+
+
 function displayResults () {};
 
-$('.search').click( function() {
-var toFind = $('input').val();
-console.log(toFind);
-defineRequest(toFind);
-displayResults();
 
-});
 
 
  function buildApiRequest(requestMethod, path, params) {
     params = removeEmptyParams(params);
     var request = gapi.client.request({
           'method': requestMethod,
-          'path': path,
+          'path': youtube.search.list,
           'params': params
       });
 

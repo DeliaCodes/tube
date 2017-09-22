@@ -2,7 +2,7 @@ var YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 //console log response! youtube id at the end of the url
 
-
+//do i need this?
 var RESULT_HTML_TEMPLATE = (
   '<div>' +
     '<h2>' +
@@ -14,13 +14,15 @@ var RESULT_HTML_TEMPLATE = (
 
 function getDataFromApi(searchTerm, callback) {
   var query = {
-    q: searchTerm + " in:name",
-    per_page: 5
+    'path': 'https://www.googleapis.com/youtube/v3/search', 
+    'params': {'q': q, 'part': 'snippet'}
   }
+  console.log(query);
   $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
+console.log(getDataFromApi);
 
-
+//do i need this?
 function renderResult(result) {
   var template = $(RESULT_HTML_TEMPLATE);
   template.find(".js-result-name").text(result.name).attr("href", result.html_url);
@@ -34,18 +36,18 @@ function displaySearchData(data) {
   var results = data.items.map(function(item, index) {
     return renderResult(item);
   });
-  $('.js-search-results').html(results);
+  $('#results').html(results);
 }
 
 function watchSubmit() {
-  $('.js-search-form').submit(function(event) {
-    event.preventDefault();
+  $('.search-form').submit(function(event) {
+    event.preventDefault(); //where is js-query?
     var queryTarget = $(event.currentTarget).find('.js-query');
-    var query = queryTarget.val();
+    var query = $("input").val();
     // clear out the input
     queryTarget.val("");
     getDataFromApi(query, displaySearchData);
   });
 }
-
+console.log(watchSubmit);
 $(watchSubmit);

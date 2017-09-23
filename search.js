@@ -7,11 +7,34 @@
  //search is hooked up but we need to finish the API auth first
 
 function start() {
-        // Initializes the client with the API key and the Translate API.
+  // 2. Initialize the JavaScript client library.
+  gapi.client.init({
+    'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
+  }
+
+  function() {
+    // 3. Initialize and make the API request.
+    return gapi.client.request({
+      'path': 'gapi.client.youtube.search.list',
+    })
+  })
+
+  function(response) {
+    console.log(response.result);
+  }, function(reason) {
+    console.log('Error: ' + reason.result.error.message);
+  };
+};
+// 1. Load the JavaScript client library.
+gapi.load('client', start);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function start() {
+        // Initializes the client with the API key and the youtube API.
         gapi.client.init({
           'apiKey': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
-        });
-}
+            //https://developers.google.com/api-client-library/javascript/start/start-js - option 2
+        }).then(
+
 // Search for a specified string.
 function search() {
   var q = $('input').val();
@@ -32,50 +55,46 @@ request.execute(function(response) {
                           src=https://www.youtube.com/embed/"+response.items[i].id.videoId+"> \
                           </iframe>")
   }
-    // var str = JSON.stringify(response.items);
-    // $('#results').html('<pre>' + str + '</pre>');
+  );
+}
+
+  request.execute(function(response) {
+    var str = JSON.stringify(response.result);
+    $('#results').html('<pre>' + str + '</pre>');
   });
-}
+
+
 // Loads the JavaScript client library and invokes `start` afterwards.
-    
-function handleLoad(){
-  // 'youtube', 'v3'
-  gapi.load('client', start);
-}
+$('#search-button').click(
 
-// function displayResults () {};
-
-$('#search-button').click( function() {
-  event.preventDefault();
-  search();
-  var toFind = $('input').val();
-
-// defineRequest(toFind);
-// displayResults();
-
-});
+  );
 
 
-//  function buildApiRequest(requestMethod, path, params) {
-//     params = removeEmptyParams(params);
-//     var request = gapi.client.request({
-//           'method': requestMethod,
-//           'path': path,
-//           'params': params
-//       });
-
-//   function defineRequest(toFind) {
-
-// buildApiRequest ('GET',
-//                 '/youtube/v3/search',
-//                 {'maxResults': '25',
-//                  'part': 'snippet',
-//                  'q': 'toFind',
-//                  'type': 'video'});
-
-//   }};
+function displayResults () {};
 
 
+
+
+ function buildApiRequest(requestMethod, path, params) {
+    params = removeEmptyParams(params);
+    var request = gapi.client.request({
+          'method': requestMethod,
+          'path': youtube.search.list,
+          'params': params
+      });
+
+  function defineRequest(toFind) {
+
+buildApiRequest ('GET',
+                '/youtube/v3/search',
+                {'maxResults': '25',
+                 'part': 'snippet',
+                 'q': 'toFind',
+                 'type': 'video'});
+
+  }};
+
+*/
 
 
 

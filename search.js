@@ -15,7 +15,6 @@ function start() {
 // Search for a specified string.
 function search() {
   var q = $('input').val();
-  console.log(gapi.client);
   var request = gapi.client.request({
     'path': 'https://www.googleapis.com/youtube/v3/search', 
     'params': {'q': q, 'part': 'snippet'}

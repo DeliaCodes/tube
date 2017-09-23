@@ -11,9 +11,9 @@ function getDataFromApi(searchTerm, callback) {
   $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
 
-//needs to be called and data passed to it
+//does data work right in this context?
 function displaySearchData(data) {
-  $('#results').html('<pre>' +  + '</pre>')
+  $('#results').html('<pre>' + data  + '</pre>')
 }
 
 function watchSubmit() {

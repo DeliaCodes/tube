@@ -15,7 +15,7 @@ var RESULT_HTML_TEMPLATE = (
 function getDataFromApi(searchTerm, callback) {
   var query = {
     'path': 'https://www.googleapis.com/youtube/v3/search', 
-    'params': {'q': q, 'part': 'snippet'}
+    'params': {'key': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE','q': query, 'part': 'snippet'}
   }
   console.log(query);
   $.getJSON(YOUTUBE_SEARCH_URL, query, callback);

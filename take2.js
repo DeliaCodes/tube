@@ -1,5 +1,6 @@
 var YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?';
-
+var displayMe = [];
+var linkMe = [];
 //console log response! youtube id at the end of the url
 
 function getDataFromApi(searchTerm, callback) {
@@ -16,10 +17,11 @@ function getDataFromApi(searchTerm, callback) {
 function processData (data) {
 //iterate over array in the items key in the object
 //get thumbnail link - put that in an href and then use the id to make the link
+
 var getThumbnails = data.items;
 for (var i = 0; i < getThumbnails.length; i++) {
-  var displayMe = []; 
-  displayMe.push(getThumbnails[i].thumbnails.default.url);
+  displayMe.push(getThumbnails[i].snippet.thumbnails.default.url);
+  linkMe.push(getThumbnails[i].id.)
   //https://goo.gl/6XWBbU Might help accessing the deeply nested data in above
 }
 console.log (displayMe);
@@ -28,8 +30,10 @@ console.log (displayMe);
 function displaySearchData(data) {
   processData(data);
   for (var i = 0; i < displayMe.length; i++) {
-    $('#results').html('<li>' + displayMe[i] + '</li>')
-
+    $('#results').append('<li class="links"><img src="' + displayMe[i] + '"></li>')
+  }
+  for (var i = 0; i < linkMe.length; i++) {
+   $('.links').append( '<a href="https://www.youtube.com/' + linkMe[i] + '"></a>' )
   }
   
 console.log(data);

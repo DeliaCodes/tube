@@ -16,11 +16,21 @@ function getDataFromApi(searchTerm, callback) {
 function processData (data) {
 //iterate over array in the items key in the object
 //get thumbnail link - put that in an href and then use the id to make the link
-$().map
+var getThumbnails = data.items();
+for (var i = 0; i < getThumbnails.length; i++) {
+  var displayMe = []; 
+  displayMe.push(getThumbnails[i].thumbnails().default().url());
+}
+console.log (displayMe);
 };
 
 function displaySearchData(data) {
-  $('#results').html('' +   + '')
+  processData(data);
+  for (var i = 0; i < displayMe.length; i++) {
+    $('#results').html('<li>' + displayMe[i] + '</li>')
+
+  }
+  
 console.log(data);
 }
 

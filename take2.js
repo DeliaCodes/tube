@@ -16,10 +16,10 @@ function getDataFromApi(searchTerm, callback) {
 function processData (data) {
 //iterate over array in the items key in the object
 //get thumbnail link - put that in an href and then use the id to make the link
-var getThumbnails = data.items();
+var getThumbnails = data.items;
 for (var i = 0; i < getThumbnails.length; i++) {
   var displayMe = []; 
-  displayMe.push(getThumbnails[i].thumbnails().default().url());
+  displayMe.push(getThumbnails[i].thumbnails[].default[].url[]);
 }
 console.log (displayMe);
 };

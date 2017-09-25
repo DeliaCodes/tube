@@ -19,7 +19,8 @@ function processData (data) {
 var getThumbnails = data.items;
 for (var i = 0; i < getThumbnails.length; i++) {
   var displayMe = []; 
-  displayMe.push(getThumbnails[i].thumbnails[].default[].url[]);
+  displayMe.push(getThumbnails[i].thumbnails.default.url);
+  //https://goo.gl/6XWBbU Might help accessing the deeply nested data in above
 }
 console.log (displayMe);
 };

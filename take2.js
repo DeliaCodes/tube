@@ -1,28 +1,33 @@
-var YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+var YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search?';
 
 //console log response! youtube id at the end of the url
 
 function getDataFromApi(searchTerm, callback) {
   var query = {
-    'path': 'https://www.googleapis.com/youtube/v3/search', 
-    'params': {'key': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE','q': query, 'part': 'snippet'}
-  }
+    'path': 'https://www.googleapis.com/youtube/v3/search?', 
+    'key': 'AIzaSyB6nskjz1y78Vvihls3vxvnfQ7wllV2yFE',
+    'q': query, 
+    'part': 'snippet'}
+  
   //console.log(query);
   $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
 
-//does data work right in this context?
+function processData (data) {
+//iterate over array in the items key in the object
+//get thumbnail link - put that in an href and then use the id to make the link
+$().map
+};
+
 function displaySearchData(data) {
-  $('#results').html('<pre>' + data  + '</pre>')
+  $('#results').html('' +   + '')
+console.log(data);
 }
 
 function watchSubmit() {
   $('.search-form').submit(function(event) {
     event.preventDefault(); //where is js-query?
-    var queryTarget = $(event.currentTarget).find('.js-query');
     var query = $("input").val();
-    // do I need queryTarget?
-    queryTarget.val("");
     getDataFromApi(query, displaySearchData);
   });
 }

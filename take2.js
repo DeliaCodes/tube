@@ -15,7 +15,7 @@ function getDataFromApi(searchTerm, callback) {
 function processData (data) {
 
 var getThumbnails = data.items;
-for (var i = 0; i < getThumbnails.length; i++) {
+for (let i = 0; i < getThumbnails.length; i++) {
   displayMe.push(getThumbnails[i].snippet.thumbnails.default.url);
   linkMe.push(getThumbnails[i].id.videoId);
 }
@@ -25,7 +25,7 @@ for (var i = 0; i < getThumbnails.length; i++) {
 
 function displaySearchData(data) {
   processData(data);
-  for (var i = 0; i < linkMe.length; i++) {
+  for (let i = 0; i < linkMe.length; i++) {
    $('#results').append('<li><a class="links" href="https://www.youtube.com/watch?v=' + linkMe[i] + '"><img src="' + displayMe[i] + '"></a></li>');
   }
 //console.log(data);

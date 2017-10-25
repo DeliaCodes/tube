@@ -22,7 +22,7 @@ for (let i = 0; i < getThumbnails.length; i++) {
 //console.log (displayMe);
 //console.log(linkMe);
 };
-
+//aria label? alt text or both?
 function displaySearchData(data) {
   processData(data);
   for (let i = 0; i < linkMe.length; i++) {

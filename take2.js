@@ -33,7 +33,7 @@ function displaySearchData(data) {
 
 function watchSubmit() {
   $('.search-form').submit(function(event) {
-    event.preventDefault(); //where is js-query?
+    event.preventDefault(); 
     var query = $("input").val();
     getDataFromApi(query, displaySearchData);
   });

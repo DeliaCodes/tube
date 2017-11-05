@@ -28,7 +28,7 @@ for (let i = 0; i < getThumbnails.length; i++) {
 function displaySearchData(data) {
   processData(data);
   for (let i = 0; i < linkMe.length; i++) {
-   $('#results').append('<li><a class="links" aria-label="Youtube result' + i +'" href="https://www.youtube.com/watch?v=' + linkMe[i] + '"><img src="' + displayMe[i] + '"></a></li>');
+   $('#results').append('<li><a class="links" aria-label="Youtube result' + i +'" href="https://www.youtube.com/watch?v=' + linkMe[i] + '"><img src="' + displayMe[i] + '" aria-label="' + titleMe[i] + '"></a></li>');
   }
 console.log(data);
 }
